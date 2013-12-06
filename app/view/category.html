@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Categories</h1>
+    <input type="button" id="add" value="Add" />
+    <br />
+    <br />
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Options</th>
+        </tr>
+        <tr data-ng-repeat="category in categories | orderBy:'name'" >
+            <td>{{category.name}}</td>
+            <td>editar | excluir</td>
+        </tr>
+    </table>
+</div>
