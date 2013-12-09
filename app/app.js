@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('flashCardApp', ['ngRoute'])
+    angular.module('flashCardApp', ['ngRoute','ui.bootstrap'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {

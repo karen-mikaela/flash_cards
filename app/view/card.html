@@ -1,24 +1,28 @@
 <div class="container">
     <h1>Flash Cards</h1>
-    <input type="button" id="add" value="Add" />
+    <input type="button" class="btn btn-primary" id="add" value="Add" />
     <br />
     <br />
     <label for="filter_category" >Filtrar :</label>
     <input type="text" id="filter_category" data-ng-model="filter_category" />
     <br />
     <br />
-    <table>
-        <tr>
-            <th>Front</th>
-            <th>Back</th>
-            <th>Category</th>
-            <th>Options</th>
-        </tr>
-        <tr data-ng-repeat="card in cards | filter:filter_category | orderBy:'category'" >
-            <td>{{card.front}}</td>
-            <td>{{card.back}}</td>
-            <td>{{card.category}}</td>
-            <td>editar | excluir</td>
-        </tr>
+    <table class="zebra-striped">
+        <thead>
+            <tr>
+                <th>Front</th>
+                <th>Back</th>
+                <th>Category</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="card in cards | filter:filter_category | orderBy:'category'" >
+                <td>{{card.front}}</td>
+                <td>{{card.back}}</td>
+                <td>{{card.category}}</td>
+                <td>editar | excluir</td>
+            </tr>
+        </tbody>
     </table>
 </div>

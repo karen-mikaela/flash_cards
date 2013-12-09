@@ -2,10 +2,20 @@
 <html data-ng-app="flashCardApp" >
     <head>
         <title>FlashCard</title>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     </head>
     <boody>
         <div>
-           <div data-ng-view=""></div>
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#" data-toggle="tab" id="card-tab">Cards</a>
+              </li>
+              <li>
+                <a href="#categories" data-toggle="tab" id="category-tab">Categories</a>
+              </li>
+            </ul>
+            <div data-ng-view=""></div>
         </div>
         <script src="assets/js/angular.min.js"></script>
         <script src="assets/js/angular-route.js"></script>
@@ -13,6 +23,8 @@
         <script src="app/controller/cardController.js"></script>
         <script src="app/controller/categoryController.js"></script>
         <script src="app/factory/cardFactory.js"></script>
+        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.min.js"></script>
+        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-0.6.0.min.js"></script>
 
     </body>
 </html>
