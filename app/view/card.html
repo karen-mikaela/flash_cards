@@ -4,24 +4,45 @@
     <br />
     <br />
     <label for="filter_category" >Filtrar :</label>
-    <input type="text" id="filter_category" data-ng-model="filter_category" />
+    <input type="text" id="filter_category" class="form-control" placeholder="Enter Category" data-ng-model="filter_category" />
     <br />
     <br />
-    <table class="zebra-striped">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Front</th>
                 <th>Back</th>
                 <th>Category</th>
-                <th>Options</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr data-ng-repeat="card in cards | filter:filter_category | orderBy:'category'" >
-                <td>{{card.front}}</td>
-                <td>{{card.back}}</td>
-                <td>{{card.category}}</td>
-                <td>editar | excluir</td>
+                <td>
+                    <span ng-if="!card.$edit">{{card.front}}</span>
+                    <div ng-if="card.$edit">
+                        <input class="form-control" type="text" ng-model="card.front" />
+                    </div>
+                    
+                </td>
+                <td>
+                    <span ng-if="!card.$edit">{{card.back}}</span>
+                    <div ng-if="card.$edit">
+                        <input class="form-control" type="text" ng-model="card.back" />
+                    </div>
+                </td>
+                <td>
+                    <span ng-if="!card.$edit">{{card.category}}</span>
+                    <div ng-if="card.$edit">
+                        <input class="form-control" type="text" ng-model="card.category" />
+                    </div>
+
+                </td>
+                <td>
+                    <a ng-if="!card.$edit" href="" class="btn btn-primary btn-xs" ng-click="card.$edit = true">Edit</a>
+                    <a ng-if="card.$edit" href="" class="btn btn-success btn-xs" ng-click="card.$edit = false">Save</a>
+                    <a href="" class="btn btn-warning btn-xs" ng-click="card.$delete = true">Remove</a>
+                </td>
             </tr>
         </tbody>
     </table>
