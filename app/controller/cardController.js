@@ -1,7 +1,9 @@
 (function () {
 
-    var cardController = function ($scope, cardFactory) {
+    var cardController = function ($scope, cardFactory, categoryFactory) {
         $scope.cards = [];
+        $scope.categories = [];
+        $scope.isCollapsed = false;
         init()
 
         $scope.refreshCards = function () {
@@ -10,13 +12,19 @@
 
         function init() {
             $scope.cards = cardFactory.getCards();
-            $scope.isCollapsed = false;
-            console.log("ee"+$scope.isCollapsed);
+            $scope.categories = categoryFactory.getCategories();
+        }
+
+        $scope.collapse = function(){
+            $scope.isCollapsed = !$scope.isCollapsed;
+        }
+        $scope.close = function(){
+            $scope.isCollapsed = true;
         }
 
     };
 
     angular.module('flashCardApp').controller('CardController',
-        ['$scope', 'cardFactory', cardController]);
+        ['$scope', 'cardFactory', 'categoryFactory', cardController]);
 
 }());

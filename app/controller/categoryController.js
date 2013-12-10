@@ -1,6 +1,6 @@
 (function () {
 
-    var categoryController = function ($scope) {
+    var categoryController = function ($scope, categoryFactory) {
         $scope.categories = [];
         init()
 
@@ -13,15 +13,11 @@
         }
 
         function getCategories() {
-            $scope.categories = [
-                {"name": "Object"},
-                {"name": "Expression"},
-                {"name": "Clothes"}
-                ];
+            $scope.categories = categoryFactory.getCategories();
         }
     };
 
     angular.module('flashCardApp').controller('CategoryController',
-        ['$scope',  categoryController]);
+        ['$scope', 'categoryFactory', categoryController]);
 
 }());
