@@ -1,15 +1,29 @@
 <div class="container">
     <h1>Flash Cards</h1>
-    <input type="button" class="btn btn-primary" id="add" value="Add" />
-
-    <button class="btn" data-ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+    <button class="btn btn-primary" data-ng-click="collapse()">Add</button>
     <hr>
-    <div collapse="isCollapsed">
-        <div class="well well-large">Some content</div> 
+    <div data-ng-hide="isCollapsed" class="ng-hide">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="front">Front</label>
+                <input type="text" class="form-control" id="front" placeholder="Enter Front">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="front">back</label>
+                <input type="text" class="form-control" id="back" placeholder="Enter back">
+            </div>
+            <div class="form-group">
+                <select class="form-control">
+                    <option value="" default selected>Select Category</option>
+                    <option data-ng-repeat="category in categories | orderBy:'name'" value="{{category.name}}">{{category.name}}</option>
+                </select>
+            </div>
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="submit" class="btn btn-default" data-ng-click="close()" >Cancel</button>
+        </form>
+        <hr>
     </div>
-
-    <br />
-    <br />
+    <br/>
     <label for="filter_category" >Filter :</label>
     <input type="text" id="filter_category" class="form-control" placeholder="Enter Category" data-ng-model="filter_category" />
     <br />
@@ -24,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr data-ng-repeat="card in cards | filter:filter_category | orderBy:'category'" >
+            <tr data-ng-repeat="card in cards | filter:filter_category | orderBy:'front'" >
                 <td>
                     <span ng-if="!card.$edit">{{card.front}}</span>
                     <div ng-if="card.$edit">
@@ -41,7 +55,10 @@
                 <td>
                     <span ng-if="!card.$edit">{{card.category}}</span>
                     <div ng-if="card.$edit">
-                        <input class="form-control" type="text" ng-model="card.category" />
+                        <select class="form-control" ng-model="card.category">
+                            <option value="" default selected>Select Category</option>
+                            <option data-ng-repeat="category in categories | orderBy:'name'" value="{{category.name}}">{{category.name}}</option>
+                        </select>
                     </div>
 
                 </td>
