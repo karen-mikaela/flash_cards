@@ -10,6 +10,8 @@
 
         function init() {
             $scope.cards = cardFactory.getCards();
+            $scope.isCollapsed = false;
+            console.log("ee"+$scope.isCollapsed);
         }
 
     };

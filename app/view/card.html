@@ -1,9 +1,16 @@
 <div class="container">
     <h1>Flash Cards</h1>
     <input type="button" class="btn btn-primary" id="add" value="Add" />
+
+    <button class="btn" data-ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+    <hr>
+    <div collapse="isCollapsed">
+        <div class="well well-large">Some content</div> 
+    </div>
+
     <br />
     <br />
-    <label for="filter_category" >Filtrar :</label>
+    <label for="filter_category" >Filter :</label>
     <input type="text" id="filter_category" class="form-control" placeholder="Enter Category" data-ng-model="filter_category" />
     <br />
     <br />
