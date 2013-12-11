@@ -7,7 +7,7 @@
         init()
 
         $scope.refreshCards = function(){
-            init();
+            $scope.cards = cardFactory.getCards();
         }
 
         function init(){
@@ -29,7 +29,7 @@
         }
 
         $scope.remove = function(){
-            console.log(this.card);            
+            console.log(this.card);
             var index = $scope.cards.indexOf(this.card);
             console.log("vai eliminar "+ ($scope.cards[index]).front);
             console.log("vai eliminar de id  "+ index);
@@ -42,6 +42,12 @@
             $scope.card.back = "";
             $scope.card.category ="";
         }
+
+        $scope.cancel =  function(){
+            this.card.$edit = false;
+            $scope.refreshCards();
+        }
+
 
     };
 
