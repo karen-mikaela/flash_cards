@@ -3,22 +3,22 @@
     <button class="btn btn-primary" data-ng-click="collapse()">Add</button>
     <hr>
     <div data-ng-hide="isCollapsed" class="ng-hide">
-        <form class="form-inline" role="form">
+        <form class="form-inline" role="form" name="addCardForm">
             <div class="form-group">
                 <label class="sr-only" for="front">Front</label>
-                <input type="text" class="form-control" id="front" placeholder="Enter Front" data-ng-model="card.front">
+                <input type="text" class="form-control" id="front" placeholder="Enter Front" data-ng-model="card.front" required >
             </div>
             <div class="form-group">
                 <label class="sr-only" for="front">back</label>
-                <input type="text" class="form-control" id="back" placeholder="Enter back" data-ng-model="card.back">
+                <input type="text" class="form-control" id="back" placeholder="Enter back" data-ng-model="card.back" required >
             </div>
             <div class="form-group">
-                <select class="form-control" data-ng-model="card.category">
+                <select class="form-control" data-ng-model="card.category" required>
                     <option value="" default selected>Select Category</option>
                     <option data-ng-repeat="category in categories | orderBy:'name'" value="{{category.name}}">{{category.name}}</option>
                 </select>
             </div>
-          <button type="submit" class="btn btn-success" data-ng-click="add()">Save</button>
+          <button data-ng-disabled="addCardForm.$invalid" type="submit" class="btn btn-success" data-ng-click="add()">Save</button>
           <button type="submit" class="btn btn-default" data-ng-click="close()" >Cancel</button>
         </form>
         <hr>
